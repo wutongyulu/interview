@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  todo-ui:
+    image: wikifactory/todo-client:latest
+    restart: on-failure
+    ports:
+      - "80:80"
+    depends_on:
+      todo-service:
+        condition: service_started
+
+  todo-redis:
+    container_name: todo-redis
+    image: redis:4.0.10-alpine
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - todo-redis-data:/data
+
+  todo-service:
+    image: wikifactory/todo-server:latest
+    restart: on-failure
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - MONGO_SERVER=${MONGO_SERVER}
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_DB=${MONGO_DB}
+      - JWT_SECRET=${JWT_SECRET}
+
+volumes:
+  todo-redis-data:
