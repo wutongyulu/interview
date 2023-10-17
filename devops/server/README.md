@@ -10,8 +10,8 @@ create a file `nodemon.json` and add the following configuration
 ```json
 {
   "env": {
-    "MONGO_USER": "Mongo username",
-    "MONGO_PASSWORD": "Mongo password",
+    "MONGO_INITDB_ROOT_USERNAME": "Mongo username",
+    "MONGO_INITDB_ROOT_PASSWORD": "Mongo password",
     "MONGO_DB": "Mongo database",
     "MONGO_SERVER": "Mongo server hostname",
     "JWT_SECRET": "Your secret :)"

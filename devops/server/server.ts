@@ -16,7 +16,7 @@ const server = new ApolloServer(ApolloConfig);
 server.applyMiddleware({ app });
 
 // construct the mongo connection string
-const mongoUrl = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_SERVER}:27017/${process.env.MONGO_DB}?authSource=admin`;
+const mongoUrl = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_SERVER}:27017/${process.env.MONGO_DB}?authSource=admin`;
 
 // init the mongo connection
 mongoose
