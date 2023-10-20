@@ -18,7 +18,7 @@ jobs:
         cd ..
         cd server/
         docker build -t evegarden/todo-server:latest .
-        docker login -u ${{secrets.USERNAME_DOCKER}} -P ${{secrets.PASSWORD_DOCKER}}
+        docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}}
         docker push evegarden/todo-client:latest
         docker push evegarden/todo-server:latest
 
