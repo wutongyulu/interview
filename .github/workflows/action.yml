@@ -1,22 +1,42 @@
-name: Docker Image CI
+name: action
 
 on:
   pull_request:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: appleboy/ssh-action@v1.0.0
+    - name: Checkout  # 将代码拉到虚拟机
+      uses: actions/checkout@v2.3.1 
+      
+    - name: docker-build-images
+      run: |
+        cd devops/front-end/
+        docker build -t evegarden/todo-client:latest .
+        cd ..
+        cd server/
+        docker build -t evegarden/todo-server:latest .
+        docker login -u ${{secrets.USERNAME_DOCKER}} -P ${{secrets.PASSWORD_DOCKER}}
+        docker push evegarden/todo-client:latest
+        docker push evegarden/todo-server:latest
+
+    - name: compserFile
+      uses: actions/create-release@v1
+      with:
+          tag_name: latest
+          release_name: docker-compose
+          target_commitish: docker-compose
+          token: ${{ secrets.SECRETS_TOKEN }}
+
+    
     - name: deploy
+      uses: appleboy/ssh-action@v1.0.0
       with: 
-        host: ${{HOST}}
-        username:  ${{USERNAME}}
-        password: ${{PASSWORD}}
+        host: ${{secrets.HOST}}
+        username:  ${{secrets.USERNAME}}
+        password: ${{secrets.PASSWORD}}
         script: |
-          cd /home/github-action
+          docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}}
           
