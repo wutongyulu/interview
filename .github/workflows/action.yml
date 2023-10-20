@@ -24,11 +24,11 @@ jobs:
 
     - name: composeFile
       uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{secrets.TOKEN}}
       with:
-          token: ${{secrets.TOKEN}}
           tag_name: latest
           release_name: docker-compose
-          target_commitish: docker-compose
           commitish: docker-compose
 
 
