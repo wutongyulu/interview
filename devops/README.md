@@ -10,7 +10,7 @@ Ensure the successful local execution of the entire stack. Key components includ
 ### Frontend:
 1. **Playwright Integration:** 
     - Install and configure Playwright for frontend testing.
-    - Establish a testing suite with Playwright to comprehensively evaluate frontend functionalities.
+    - Establish a testing suite with Playwright to comprehensively evaluate frontend functionalities. 
 
 2. **Test Coverage:** 
     - Achieve a test coverage of over 80% encompassing all the core functionalities.
