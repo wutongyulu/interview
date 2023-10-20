@@ -1,7 +1,7 @@
 name: action
 
 on:
-  pull_request:
+  push:
     branches: [ "main" ]
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
         docker push evegarden/todo-client:latest
         docker push evegarden/todo-server:latest
 
-    - name: compserFile
+    - name: composeFile
       uses: actions/create-release@v1
       with:
           tag_name: latest
