@@ -42,5 +42,6 @@ jobs:
           wget https://github.com/wutongyulu/interview/archive/refs/tags/docker-compose.tar.gz
           tar -zxvf docker-compose.tar.gz
           cd /home/github-action/interview-latest/devops
+          docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}}
           docker-compose -f docker-compose.yaml up -d
           
