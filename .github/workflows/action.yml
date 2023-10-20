@@ -38,5 +38,5 @@ jobs:
         username:  ${{secrets.USERNAME}}
         password: ${{secrets.PASSWORD}}
         script: |
-          docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}}
+          docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}} 
           
