@@ -4,7 +4,7 @@ Please fork the repository to your own account, then based on the following obje
 
 **Notes: any questions/suggestions should be communicated to the interviewers since it is also part of the interview.**
 
-## Core Objectives:
+## Core Objectives: 
 Ensure the successful local execution of the entire stack. Key components include:  
 
 ### Frontend:
