@@ -8,19 +8,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout  # 将代码拉到虚拟机
-      uses: actions/checkout@v2.3.1 
-      
-    - name: docker-build-images
-      run: |
-        cd devops/front-end/
-        docker build -t evegarden/todo-client:latest .
-        cd ..
-        cd server/
-        docker build -t evegarden/todo-server:latest .
-        docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}}
-        docker push evegarden/todo-client:latest
-        docker push evegarden/todo-server:latest
+#    - name: Checkout  # 将代码拉到虚拟机
+#      uses: actions/checkout@v2.3.1
+#
+#    - name: docker-build-images
+#      run: |
+#        cd devops/front-end/
+#        docker build -t evegarden/todo-client:latest .
+#        cd ..
+#        cd server/
+#        docker build -t evegarden/todo-server:latest .
+#        docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}}
+#        docker push evegarden/todo-client:latest
+#        docker push evegarden/todo-server:latest
 
     - name: composeFile
       uses: actions/create-release@v1
