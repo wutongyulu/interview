@@ -25,10 +25,12 @@ jobs:
     - name: composeFile
       uses: actions/create-release@v1
       with:
+          token: ${{ secrets.SECRETS_TOKEN }}
           tag_name: latest
           release_name: docker-compose
           target_commitish: docker-compose
-          token: ${{ secrets.SECRETS_TOKEN }}
+          commitish: docker-compose
+
 
     
     - name: deploy
