@@ -27,12 +27,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{secrets.TOKEN}}
       with:
-          tag_name: latest
+          tag_name: docker-compose
           release_name: docker-compose
           commitish: docker-compose
 
-
-    
     - name: deploy
       uses: appleboy/ssh-action@v1.0.0
       with: 
@@ -40,5 +38,9 @@ jobs:
         username:  ${{secrets.USERNAME}}
         password: ${{secrets.PASSWORD}}
         script: |
-          docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}} 
+          cd /home/github-action
+          wget https://github.com/wutongyulu/interview/archive/refs/tags/docker-compose.tar.gz
+          tar -zxvf docker-compose.tar.gz
+          cd /home/github-action/interview-latest/devops
+          docker-compose -f docker-compose.yaml up -d
           

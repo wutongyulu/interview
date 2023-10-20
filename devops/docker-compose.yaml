@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   todo-ui:
-    image: wikifactory/todo-client:latest
+    image: evegarden/todo-client:latest
     restart: on-failure
     ports:
       - "81:80"
@@ -23,7 +23,7 @@ services:
       - todo-redis-data:/data
 
   todo-service:
-    image: wikifactory/todo-server:latest
+    image: evegarden/todo-server:latest
     restart: on-failure
     deploy:
       replicas: 3
