@@ -32,8 +32,8 @@ jobs:
           # release_name: docker-compose
           name: docker-compose
           # commitish: docker-compose
-          commit: docker-compose
-          allowUpdates: true
+          # commit: docker-compose
+          # allowUpdates: true
 
     # - name: deploy
     #   uses: appleboy/ssh-action@v1.0.0
