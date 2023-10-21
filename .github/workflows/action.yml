@@ -30,7 +30,7 @@ jobs:
       with:
           token: ${{secrets.TOKEN}}
           # tag_name: docker-compose
-          # tag: docker-compose
+          tag: docker-compose
           # release_name: docker-compose
           # name: docker-compose
           # commitish: docker-compose
