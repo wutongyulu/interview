@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-#    - name: Checkout  # 将代码拉到虚拟机
-#      uses: actions/checkout@v2.3.1
+   - name: Checkout  
+     uses: actions/checkout@v2.3.1
 #
 #    - name: docker-build-images
 #      run: |
@@ -23,20 +23,21 @@ jobs:
 #        docker push evegarden/todo-server:latest
 
     - name: composeFile
-      # uses: ncipollo/release-action@v1
-      uses: actions/create-release@v1
+      uses: ncipollo/release-action@v1
+      # uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{secrets.TOKEN}}
       with:
-          # token: ${{secrets.TOKEN}}
-          tag_name: docker-compose
-          # tag: docker-compose
-          release_name: docker-compose
-          # name: docker-compose
-          commitish: docker-compose
-          # commit: docker-compose
-          # allowUpdates: true
-          # replacesArtifacts: true
+          token: ${{secrets.TOKEN}}
+          # tag_name: docker-compose
+          tag: docker-compose
+          # release_name: docker-compose
+          name: docker-compose
+          # commitish: docker-compose
+          commit: docker-compose
+          allowUpdates: true
+          replacesArtifacts: true
+          artifacts: "devops/env/,devops/docker-compose.yaml"
 
     # - name: deploy
     #   uses: appleboy/ssh-action@v1.0.0
