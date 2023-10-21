@@ -27,6 +27,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{secrets.TOKEN}}
       with:
+          token: ${{secrets.TOKEN}}
           # tag_name: docker-compose-latest
           tag: docker-compose
           # release_name: docker-compose
