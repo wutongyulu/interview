@@ -38,6 +38,7 @@ jobs:
           allowUpdates: true
           replacesArtifacts: true
           artifacts: "devops/env/,devops/docker-compose.yaml"
+          ref: docker-compose
 
     # - name: deploy
     #   uses: appleboy/ssh-action@v1.0.0
