@@ -24,10 +24,10 @@ jobs:
     - name: tar docker-compose-config
       run: |
         pwd
-        ls
         cd devops
-        ls
         tar -cvzf docker-compose.tar.gz docker-compose.yaml env/
+        pwd
+        ls
         
     - name: composeFile
       uses: ncipollo/release-action@v1
@@ -44,7 +44,7 @@ jobs:
           allowUpdates: true
           replacesArtifacts: true
           removeArtifacts: true
-          artifacts: "env/*,docker-compose.yaml,docker-compose.tar.gz"
+          artifacts: "devops/env/*,devops/docker-compose.yaml,devops/docker-compose.tar.gz"
        
 
     # - name: deploy
