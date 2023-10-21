@@ -30,7 +30,7 @@ jobs:
           tag_name: docker-compose
           release_name: docker-compose
           commitish: docker-compose
-          replace: true
+          replacesArtifacts: true
 
     - name: deploy
       uses: appleboy/ssh-action@v1.0.0
