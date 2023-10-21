@@ -24,7 +24,9 @@ jobs:
     - name: tar docker-compose-config
       run: |
         pwd
-        cd ..
+        ls
+        cd devops
+        ls
         tar -cvzf docker-compose.tar.gz docker-compose.yaml env/
         
     - name: composeFile
