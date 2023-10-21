@@ -23,14 +23,17 @@ jobs:
 #        docker push evegarden/todo-server:latest
 
     - name: composeFile
-      uses: actions/create-release@v1
+      uses: ncipollo/release-action@v1
       env:
         GITHUB_TOKEN: ${{secrets.TOKEN}}
       with:
-          tag_name: docker-compose-latest
-          release_name: docker-compose
-          commitish: docker-compose
-          replacesArtifacts: true
+          # tag_name: docker-compose-latest
+          tag: docker-compose
+          # release_name: docker-compose
+          name: docker-compose
+          # commitish: docker-compose
+          commit: docker-compose
+          allowUpdates: true
 
     - name: deploy
       uses: appleboy/ssh-action@v1.0.0
