@@ -44,7 +44,7 @@ jobs:
           allowUpdates: true
           replacesArtifacts: true
           removeArtifacts: true
-          artifacts: "devops/env/*,devops/docker-compose.yaml,devops/docker-compose.tar.gz"
+          artifacts: "devops/docker-compose.tar.gz"
        
 
     # - name: deploy
