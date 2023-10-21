@@ -30,7 +30,6 @@ jobs:
           tag_name: docker-compose
           release_name: docker-compose
           commitish: docker-compose
-          target_commitish: docker-compose
 
     - name: deploy
       uses: appleboy/ssh-action@v1.0.0
@@ -39,6 +38,7 @@ jobs:
         username:  ${{secrets.USERNAME}}
         password: ${{secrets.PASSWORD}}
         script: |
+          rm -rf  /home/github-action/*
           cd /home/github-action
           wget https://github.com/wutongyulu/interview/archive/refs/tags/docker-compose.tar.gz
           tar -zxvf docker-compose.tar.gz
