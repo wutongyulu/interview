@@ -21,7 +21,12 @@ jobs:
 #        docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}}
 #        docker push evegarden/todo-client:latest
 #        docker push evegarden/todo-server:latest
-
+    - name: tar docker-compose-config
+      run: |
+        pwd
+        cd ..
+        tar -cvzf docker-compose.tar.gz docker-compose.yaml env/
+        
     - name: composeFile
       uses: ncipollo/release-action@v1
       # uses: actions/create-release@v1
@@ -30,15 +35,15 @@ jobs:
       with:
           token: ${{secrets.TOKEN}}
           # tag_name: docker-compose
-          tag: docker-compose
+          tag: main
           # release_name: docker-compose
           # name: docker-compose
           # commitish: docker-compose
-          commit: docker-compose
           allowUpdates: true
           replacesArtifacts: true
-          artifacts: "devops/env/,devops/docker-compose.yaml"
-          # ref: docker-compose
+          removeArtifacts: true
+          artifacts: "env/*,docker-compose.yaml,docker-compose.tar.gz"
+       
 
     # - name: deploy
     #   uses: appleboy/ssh-action@v1.0.0
