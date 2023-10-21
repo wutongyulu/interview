@@ -23,42 +23,34 @@ jobs:
 #        docker push evegarden/todo-server:latest
     - name: tar docker-compose-config
       run: |
-        pwd
         cd devops
         tar -cvzf docker-compose.tar.gz docker-compose.yaml env/
-        pwd
-        ls
         
     - name: composeFile
       uses: ncipollo/release-action@v1
-      # uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{secrets.TOKEN}}
       with:
           token: ${{secrets.TOKEN}}
-          # tag_name: docker-compose
           tag: main
-          # release_name: docker-compose
-          # name: docker-compose
-          # commitish: docker-compose
           allowUpdates: true
           replacesArtifacts: true
           removeArtifacts: true
           artifacts: "devops/docker-compose.tar.gz"
        
 
-    # - name: deploy
-    #   uses: appleboy/ssh-action@v1.0.0
-    #   with: 
-    #     host: ${{secrets.HOST}}
-    #     username:  ${{secrets.USERNAME}}
-    #     password: ${{secrets.PASSWORD}}
-    #     script: |
-    #       rm -rf  /home/github-action/*
-    #       cd /home/github-action
-    #       wget https://github.com/wutongyulu/interview/archive/refs/tags/docker-compose.tar.gz
-    #       tar -zxvf docker-compose.tar.gz
-    #       cd /home/github-action/interview-docker-compose/devops
+    - name: deploy
+      uses: appleboy/ssh-action@v1.0.0
+      with: 
+        host: ${{secrets.HOST}}
+        username:  ${{secrets.USERNAME}}
+        password: ${{secrets.PASSWORD}}
+        script: |
+          rm -rf  /home/github-action/*
+          cd /home/github-action
+          wget https://github.com/wutongyulu/interview/releases/download/main/docker-compose.tar.gz
+          tar -zxvf docker-compose.tar.gz
+          cd /home/github-action/interview-docker-compose/devops
     #       docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}}
     #       docker-compose -f docker-compose.yaml up -d
           
