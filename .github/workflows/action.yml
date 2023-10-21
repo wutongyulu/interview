@@ -36,7 +36,7 @@ jobs:
           # commitish: docker-compose
           commit: docker-compose
           # allowUpdates: true
-          # replacesArtifacts: true
+          replacesArtifacts: true
           artifacts: "devops/env/,devops/docker-compose.yaml"
           # ref: docker-compose
 
