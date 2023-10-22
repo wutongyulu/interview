@@ -67,7 +67,9 @@ jobs:
         ls
         cd test
         ls
-        npx playwright test devops/test/test.ts
+        cd /
+        ls
+        npx playwright test 
     - uses: actions/upload-artifact@v3
       if: always()
       with:
