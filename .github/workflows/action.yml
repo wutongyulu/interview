@@ -32,7 +32,7 @@ jobs:
         GITHUB_TOKEN: ${{secrets.TOKEN}}
       with:
           token: ${{secrets.TOKEN}}
-          tag: main
+          tag: main-docker-compose
           allowUpdates: true
           replacesArtifacts: true
           removeArtifacts: true
@@ -48,7 +48,7 @@ jobs:
         script: |
           rm -rf  /home/github-action/*
           cd /home/github-action
-          wget https://github.com/wutongyulu/interview/releases/download/main/docker-compose.tar.gz
+          wget https://github.com/wutongyulu/interview/releases/download/main-docker-compose/docker-compose.tar.gz
           tar -zxvf docker-compose.tar.gz         
           docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}}
           docker-compose down -v
