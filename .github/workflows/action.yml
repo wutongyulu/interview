@@ -58,9 +58,8 @@ jobs:
       with:
         node-version: 18
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
       run: |
+        npx playwright install --with-deps
         pwd
         ls
         cd devops/tests
