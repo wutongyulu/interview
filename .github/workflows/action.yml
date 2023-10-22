@@ -51,5 +51,6 @@ jobs:
           wget https://github.com/wutongyulu/interview/releases/download/main/docker-compose.tar.gz
           tar -zxvf docker-compose.tar.gz         
           docker login -u ${{secrets.USERNAME_DOCKER}} -p ${{secrets.PASSWORD_DOCKER}}
+          docker-compose down -v
           docker-compose -f docker-compose.yaml up -d
           
