@@ -63,7 +63,7 @@ jobs:
       run: |
         pwd
         ls
-        cd /devops/tests
+        cd devops/tests
         npx playwright test 
     - uses: actions/upload-artifact@v3
       if: always()
