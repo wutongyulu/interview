@@ -61,7 +61,7 @@ jobs:
       run: |
         npx playwright install --with-deps
         pwd
-        ls
+        ls /usr/local/lib/node_modules
         cd devops/tests
         npx playwright test 
     - uses: actions/upload-artifact@v3
