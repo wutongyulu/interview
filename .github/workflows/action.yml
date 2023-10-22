@@ -57,10 +57,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 18
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+    # - name: Install Playwright Browsers
+    #   run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test devops/test/test.ts
+      run: |
+        pwd
+        ls
+        npx playwright test devops/test/test.ts
     - uses: actions/upload-artifact@v3
       if: always()
       with:
